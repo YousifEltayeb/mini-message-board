@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<% messages.map((message,index)=> { %>
+		<br>
+		Message number: <%=index + 1%>
+		<br>
+		<a href=<%=`/messages/${index}` %> >
+		<button>Message details</button>
+		</a>
+		<br>
+		Text: <%= message.text%>
+		<br>
+		User: <%= message.user%>
+		<br>
+		Date: <%= message.added%>
+		<br>
+	 <%	})%> 
+		<br>
+		<a href="/new">Click here to send a message</a>
+</body>
+</html>
