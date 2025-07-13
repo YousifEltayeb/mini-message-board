@@ -1,28 +1,12 @@
 const { Router } = require("express");
 const indexRouter = Router();
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
-indexRouter.get("/", (req, res) => {
-  res.render("index", { messages: messages });
-});
+const indexController = require("../controllers/indexController");
 
-indexRouter.get("/messages/:messageID", (req, res) => {
-  res.render("message", { message: messages[req.params.messageID] });
-});
-indexRouter.get("/new", (req, res) => {
-  res.render("form");
-});
+indexRouter.get("/", indexController.getMessages);
+indexRouter.get("/messages/:messageID", indexController.getMessage);
+indexRouter.get("/new", indexController.getMessageForm);
+indexRouter.post("/new", indexController.postMessageForm);
 indexRouter.post("/new", (req, res) => {
   const formData = req.body;
 
